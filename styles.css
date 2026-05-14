@@ -1,3 +1,164 @@
+/* CSS Reset taken from 
+https://www.joshwcomeau.com/css/custom-css-reset/ */
+/* CSS Reset Start */
+/* ============================================== */
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+body {
+  /* 4. Increase line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+/* CSS Reset End */
+/* ============================================== */
+
+/* CSS Variables Start*/
+/* ============================================== */
+:root {
+  --sidebar-background-color: rgb(0, 217, 255);
+}
+/* ============================================== */
+/* CSS Variables End*/
+
 body {
   overflow: auto;
+  height: 100vh;
+}
+
+/* Sidebar Start */
+/* ============================================== */
+#sidebar {
+  /* 
+    This grid code will allow us to create five row 
+    tracks. The intention of the layout:
+    Row 1 = Header (dashboard sidebar item).
+
+    Row 2 = It's empty, so to act as a gap.
+    
+    Row 3 = General Links div (Home, Profile, Messages, 
+    History, Tasks).
+
+    Row 4 = It's empty, so to act as a gap.
+
+    Row 5 = Settings Links div (Settings, Support, 
+    Privacy).
+  */
+
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto 40px auto 80px auto;
+
+  background-color: var(--sidebar-background-color);
+  padding: 10px;
+}
+
+#sidebar-header,
+#sidebar-general-links,
+#sidebar-settings-links {
+  /* 
+    Set each of the three divs to span two columns
+    in the parent #sidebar grid container
+  */
+  grid-column: span 2;
+
+  /* 
+    We turn these three divs into grid containers so
+    that their children (".sidebar-item"s) can use
+    subgrid.
+  */
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+#sidebar-header {
+  grid-row: 1;
+}
+
+#sidebar-general-links {
+  grid-row: 3;
+}
+
+#sidebar-settings-links {
+  grid-row: 5;
+}
+
+.sidebar-item {
+  /* 
+    Set each .sidebar-item div to span both columns
+    of the #sidebar grid container. 
+    
+    This is because the direct parent of the 
+    .sidebar-item grid container uses subgrid. 
+  */
+  grid-column: span 2;
+
+  /* 
+    Setting the .sidebar-item div to a subgrid will 
+    make the current grid "inherit" two column grid 
+    tracks from the #sidebar grid container.
+
+    Because "grid-auto-flow: row" is the default, the
+    image and the heading of the .sidebar-item will 
+    sit side by side.
+  */
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: center;
+}
+
+.sidebar-item > * {
+  margin: 10px;
 }
