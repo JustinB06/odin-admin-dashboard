@@ -121,6 +121,9 @@ body {
   */
   display: grid;
   grid-template-columns: subgrid;
+
+  /* This will remove the default padding in <ol>*/
+  padding: 0;
 }
 
 #sidebar-header {
