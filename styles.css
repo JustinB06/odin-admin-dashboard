@@ -76,11 +76,17 @@ h6 {
 /* Body Start */
 /* ============================================== */
 body {
-  height: 100vh;
+  height: 100%;
   overflow: auto;
 
   display: grid;
   grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 4fr;
+
+  /* temp */
+  background-color: goldenrod;
+  /* temp */
+  padding: 10px;
 
   /* 
     Taken from CSS Tricks' system font stack: 
@@ -96,9 +102,82 @@ body {
 /* ============================================== */
 /* Body End */
 
+/* Header Start */
+/* ============================================== */
+#header {
+  /* temp */
+  background-color: rgb(235, 129, 107);
+  /* temp */
+  padding: 10px;
+
+  grid-row: 1;
+  grid-column: 2;
+
+  display: grid;
+  grid-template-columns: 1fr 200px 30px 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+}
+
+#header-search-section {
+  grid-column: 1 / 3;
+}
+
+#header-user-display {
+  grid-column: 4;
+
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 10px;
+}
+
+#header-user-greeting {
+  grid-column: 1 / 2;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+#header-action-buttons {
+  grid-column: 3 / 5;
+
+  /* 
+    The buttons in this div wouldn't grow previously? 
+    
+    Setting the height or width to 100% here makes the 
+    div ITSELF take up the full track size between grid 
+    column line 3 to 5, in the respective dimension 
+    (height or width).
+  */
+  height: 50%;
+  width: 100%;
+
+  /* Turning this div into a grid causes the button
+  children to grow in size, taking up the entire space
+  available in the div. */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+/* ============================================== */
+/* Header End */
+
+/* Main Start */
+/* ============================================== */
+#main-content {
+  grid-row: 2;
+  grid-column: 2;
+}
+/* ============================================== */
+/* Main End */
+
 /* Sidebar Start */
 /* ============================================== */
 #sidebar {
+  grid-row: 1 / 3;
+  grid-column: 1;
+
   /* 
     This grid code will allow us to create five row 
     tracks. The intention of the layout:
