@@ -165,3 +165,8 @@ body {
 .sidebar-item > * {
   margin: 10px;
 }
+
+.sidebar-item-text {
+  color: white;
+  text-decoration: none;
+}
