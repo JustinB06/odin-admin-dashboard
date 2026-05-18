@@ -286,6 +286,13 @@ body {
 
   /* This will remove the default padding in <ol>*/
   padding: 0;
+
+  /* 
+    This will prevent the default use of 
+    "align-content:stretch", which will cause inconsistent 
+    vertical spacing between "#sidebar-header", 
+    "#sidebar-general-settings", and "#sidebar-general-links". */
+  align-content: start;
 }
 
 #sidebar-header {
