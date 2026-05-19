@@ -68,6 +68,7 @@ h6 {
 /* CSS Variables Start*/
 /* ============================================== */
 :root {
+  --page-font-size: calc(10px + 0.2vw);
   --sidebar-background-color: rgb(59, 166, 238);
   --main-content-background-color: rgb(188, 188, 188);
   --card-background-color: white;
@@ -78,8 +79,11 @@ h6 {
 /* Body Start */
 /* ============================================== */
 body {
-  height: 100%;
-  overflow: auto;
+  /* height: 100%; */
+  height: 100vh;
+  /* overflow: auto; */
+  /* temp */
+  font-size: var(--page-font-size);
 
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -111,6 +115,8 @@ body {
   background-color: rgb(235, 129, 107);
   /* temp */
   padding: 10px;
+  /* temp */
+  overflow: auto;
 
   grid-row: 1;
   grid-column: 2;
@@ -174,6 +180,8 @@ body {
   display: grid;
   grid-template-columns: 4fr 1fr;
 
+  /* temp */
+  overflow: auto;
   padding: 10px;
   background-color: var(--main-content-background-color);
 }
@@ -250,10 +258,12 @@ body {
 
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: auto 40px auto 80px auto;
+  grid-template-rows: max-content 20px max-content 40px max-content;
 
-  background-color: var(--sidebar-background-color);
+  /* temp */
+  overflow: auto;
   padding: 10px;
+  background-color: var(--sidebar-background-color);
 }
 
 #sidebar-header,
@@ -272,6 +282,7 @@ body {
   */
   display: grid;
   grid-template-columns: subgrid;
+  gap: 8px;
 
   /* This will remove the default padding in <ol>*/
   padding: 0;
@@ -314,7 +325,7 @@ body {
 }
 
 .sidebar-item > * {
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 .sidebar-item-text {
