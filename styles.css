@@ -198,23 +198,88 @@ body {
 /* Your-Projects-Section Start */
 /* ============================================== */
 #your-projects-section {
+  /* 
+    This creates a grid that will house:
+    Row 1 = "#your-projects-section-header"
+    Row 2 = ".your-projects-card-row"
+    Row 3 = ".your-projects-card-row"
+    Row 4 = ".your-projects-card-row"
+
+    I used "max-content" so that the grid rows
+    won't stretch.
+  */
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: max-content max-content max-content max-content;
-  gap: 20px;
+  gap: 10px;
 }
 
-#your-projects-section-header {
-  grid-column: 1 / 3;
+.your-projects-card-row {
+  /* 
+    This creates a grid that will house two 
+    ".your-projects-card" cards.
+
+    It only houses two div elements, but we're using
+    five rows instead of one. This is so they can be 
+    used as a row subgrid by individual 
+    ".your-projects-card" cards.
+
+    Also, since we use "max-content", each row track
+    will be sized based on the element with the most
+    content, between the two side by side
+    ".your-projects-card" cards.
+
+    Furthermore, I believe that "minmax(0px, 10px)"
+    will help to prevent overflow. The size of the 
+    h5 and the ".your-projects-card-icons" div
+    are always the same. But, the "p" can be
+    different. If the size of the "p" is too big,
+    the "minmax(0px, 10px)" row will scale 
+    accordingly to prevent overflow.
+  */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content max-content minmax(0px, 10px) max-content;
+}
+
+.your-projects-card:last-child {
+  /* 
+    Applies a 10px left margin to every 
+    ".your-projects-card" that is the last child 
+    of its parent. 
+    
+    This translates to: applies a 10px left margin
+    to the second card in every "your-projects-card-row".
+    I thought this was easier than creating an empty 
+    10px column in each "your-projects-card-row".
+  */
+  margin-left: 10px;
 }
 
 .your-projects-card {
+  /* 
+    Makes each ".your-projects-card" span all five rows
+    of the parent ".your-projects-card-row" grid.
+
+    As a result, the children of ".your-projects-card"
+    will naturally align themselves, side by side, with
+    the children of its sibling ".your-projects-card"
+   */
+  grid-row: 1 / span 4;
+
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: max-content max-content 30px max-content;
+  grid-template-rows: subgrid;
 
   padding: 20px;
   background-color: var(--card-background-color);
+}
+
+.your-projects-card > h5 {
+  grid-row: 1;
+}
+
+.your-projects-card > p {
+  grid-row: 2;
 }
 
 .your-projects-card-icons {
