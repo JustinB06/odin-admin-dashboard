@@ -178,7 +178,7 @@ body {
   grid-column: 2;
 
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3fr 1fr;
   /* TODO: Check if this is necessary. */
   /* grid-template-rows: 1fr; */
 
@@ -188,10 +188,6 @@ body {
   background-color: var(--main-content-background-color);
 }
 
-.your-projects-card {
-  padding: 20px;
-  background-color: var(--card-background-color);
-}
 /* ============================================== */
 /* Main-Content End */
 
@@ -210,7 +206,9 @@ body {
   */
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: max-content max-content max-content max-content;
+  /* testing something */
+  /* grid-template-rows: max-content max-content max-content max-content; */
+  grid-template-rows: max-content repeat(3, auto);
   gap: 10px;
 }
 
@@ -239,7 +237,9 @@ body {
   */
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: max-content max-content minmax(0px, 10px) max-content;
+  /* testing something */
+  /* grid-template-rows: max-content max-content minmax(0px, 10px) max-content; */
+  grid-template-rows: auto auto minmax(0px, 10px) auto;
 }
 
 .your-projects-card:last-child {
@@ -298,9 +298,20 @@ body {
 /* ============================================== */
 #announcements-and-trending-aside {
   display: grid;
-  grid-template-rows: auto 1fr 40px auto 1fr;
+  /* testing something */
+  /* grid-template-rows: max-content max-content max-content max-content; */
+  /* 
+    I use "max-content" for the first row because
+    I don't want the section text header to scale 
+  */
+  grid-template-rows: max-content repeat(4, auto);
+  gap: 10px;
 
-  padding: 20px;
+  margin-left: 10px;
+}
+
+.announcements-and-trending-card {
+  background-color: var(--card-background-color);
 }
 
 #announcements-heading {
@@ -309,6 +320,12 @@ body {
 
 #announcements-section {
   grid-row: 2;
+
+  padding: 20px;
+}
+
+#announcements-section > hr {
+  margin: 10px 0px;
 }
 
 #trending-heading {
@@ -317,6 +334,21 @@ body {
 
 #trending-section {
   grid-row: 5;
+
+  display: grid;
+  /* testing something */
+  /* grid-template-rows: repeat(4, max-content); */
+  grid-template-rows: repeat(4, auto);
+  gap: 10px;
+
+  padding: 20px;
+}
+
+.trending-project {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  gap: 10px;
 }
 /* ============================================== */
 /* Announcements-And-Trending-Aside End */
