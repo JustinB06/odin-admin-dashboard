@@ -488,5 +488,9 @@ body {
   color: white;
   text-decoration: none;
 }
+
+.icon {
+  fill: white;
+}
 /* Sidebar End */
 /* ============================================== */
