@@ -79,14 +79,23 @@ h6 {
 /* Body Start */
 /* ============================================== */
 body {
-  /* height: 100%; */
   height: 100vh;
-  /* overflow: auto; */
+
+  /* 
+  
+    Allows the body to handle overflow and scrolling,
+    rather than individual elements having scroll bars. 
+  */
+  overflow: auto;
   /* temp */
   font-size: var(--page-font-size);
 
+  /* 
+    minmax(160px, 1fr) will prevent the sidebar from
+    shrinking past 160px. 
+  */
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: minmax(160px, 1fr) 5fr;
   grid-template-rows: 1fr 4fr;
 
   /* 
@@ -206,7 +215,7 @@ body {
   /* grid-template-rows: 1fr; */
 
   /* temp */
-  overflow: auto;
+  /* overflow: auto */
   padding: 10px;
   background-color: var(--main-content-background-color);
 }
@@ -402,8 +411,13 @@ body {
   grid-template-columns: 1fr 4fr;
   grid-template-rows: max-content 20px max-content 40px max-content;
 
-  /* temp */
-  overflow: auto;
+  /* 
+    Allow scrollable overflow in the y-direction, but hide the
+    scrollbar in the x-direction. This is because the body's grid
+    container has a minimum column size of 160px for the sidebar. 
+  */
+  /* overflow-y: auto; */
+  /* overflow-x: hidden; */
   padding: 10px;
   background-color: var(--sidebar-background-color);
 }
