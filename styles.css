@@ -81,6 +81,8 @@ a {
 :root {
   --page-font-size: calc(10px + 0.2vw);
   --sidebar-background-color: rgb(43, 143, 210);
+  --sidebar-header-item-font-size: 18px;
+  --sidebar-item-font-size: 13px;
   --main-content-background-color: rgb(188, 188, 188);
   --card-background-color: white;
 }
@@ -420,7 +422,7 @@ body {
 
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: max-content 20px max-content 40px max-content;
+  grid-template-rows: max-content 30px max-content 40px max-content;
 
   /* 
     Allow scrollable overflow in the y-direction, but hide the
@@ -431,6 +433,10 @@ body {
   /* overflow-x: hidden; */
   padding: 10px;
   background-color: var(--sidebar-background-color);
+
+  /* Style the text in the sidebar. */
+  font-size: var(--sidebar-item-font-size);
+  font-weight: bold;
 }
 
 #sidebar-header,
@@ -449,7 +455,7 @@ body {
   */
   display: grid;
   grid-template-columns: subgrid;
-  gap: 8px;
+  gap: 10px;
 
   /* This will remove the default padding in <ol>*/
   padding: 0;
@@ -457,6 +463,8 @@ body {
 
 #sidebar-header {
   grid-row: 1;
+
+  font-size: var(--sidebar-header-item-font-size);
 }
 
 #sidebar-header-icon {
@@ -500,7 +508,7 @@ body {
   display: grid;
   grid-template-columns: subgrid;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 
   /* 
     Have the sidebar item's icon and text be placed side
@@ -523,6 +531,7 @@ body {
 } */
 
 .icon {
+  justify-self: center;
   width: 25px;
   fill: white;
 }
