@@ -80,10 +80,19 @@ a {
 /* ============================================== */
 :root {
   --page-font-size: calc(10px + 0.2vw);
+  --header-icon-width: 25px;
+  --header-search-bar-background-color: rgb(219, 225, 232);
+  --header-user-display-font-size: 9px;
+  --header-user-greeting-text-font-size: 12px;
+  --header-user-greeting-name-font-size: 18px;
+  --header-action-button-font-size: 12px;
+  --header-box-shadow-color: rgb(197, 197, 197);
   --sidebar-background-color: rgb(43, 143, 210);
   --sidebar-header-item-font-size: 18px;
+  --sidebar-header-icon-width: 40px;
   --sidebar-item-font-size: 13px;
-  --main-content-background-color: rgb(188, 188, 188);
+  --sidebar-item-icon-width: 25px;
+  --main-content-background-color: rgb(219, 225, 232);
   --card-background-color: white;
 }
 /* ============================================== */
@@ -129,9 +138,10 @@ body {
 /* ============================================== */
 #header {
   /* temp */
-  background-color: rgb(235, 129, 107);
+  background-color: white;
   /* temp */
-  padding: 10px 35px;
+  /* padding: 10px 35px; */
+  padding: 10px 35px 20px 35px;
   /* temp */
   /* overflow: auto; */
 
@@ -140,10 +150,20 @@ body {
 
   display: grid;
   /* grid-template-columns: auto 100px 100px max-content; */
-  grid-template-columns: auto minmax(0px, 400px) minmax(0px, 100px) max-content;
+  grid-template-columns:
+    auto minmax(0px, 400px) minmax(0px, 50px) minmax(0px, 100px)
+    max-content;
   /* grid-template-rows: 1fr 1fr; */
   grid-template-rows: 1fr minmax(0px, 20px) 1fr;
   align-items: center;
+
+  /* 
+    The "z-index" being 1 will have the "#header" appear 
+    above the other components of the page. Thus making
+    the box-shadow appear along the bottom of the "#header".
+  */
+  z-index: 1;
+  box-shadow: 0px 3px 2px var(--header-box-shadow-color);
 }
 
 #header-search-section {
@@ -157,20 +177,28 @@ body {
   gap: 10px;
 }
 
+#header-search-button {
+  background-color: white;
+  border-style: none;
+}
+
 #header-search-bar {
+  background-color: rgb(219, 225, 232);
   border-style: none;
   border-radius: 20px;
 }
 
 #header-user-display {
   grid-row: 1;
-  grid-column: 4;
+  grid-column: 5;
 
   display: grid;
   grid-template-columns: max-content max-content max-content;
   align-items: center;
   justify-content: end;
-  gap: 10px;
+  gap: 18px;
+
+  font-size: var(--header-user-display-font-size);
 }
 
 #header-user-greeting {
@@ -180,12 +208,22 @@ body {
   display: grid;
   grid-template-columns: max-content max-content;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
+}
+
+#header-user-greeting-text {
+  font-size: var(--header-user-greeting-text-font-size);
+  font-weight: bold;
+}
+
+#header-user-greeting-name {
+  font-size: var(--header-user-greeting-name-font-size);
+  font-weight: bold;
 }
 
 #header-action-buttons {
   grid-row: 3;
-  grid-column: 3 / 5;
+  grid-column: 4 / 6;
 
   /* 
     The buttons in this div wouldn't grow vertically,
@@ -197,7 +235,7 @@ body {
     (height or width).
   */
   /* height: 50%; */
-  height: 70%;
+  height: 65%;
   /* width: 100%; */
 
   /* Turning this div into a grid causes the button
@@ -212,6 +250,21 @@ body {
 #header-action-buttons > button {
   border-style: none;
   border-radius: 20px;
+  background-color: var(--sidebar-background-color);
+
+  font-size: var(--header-action-button-font-size);
+  font-weight: bold;
+  color: white;
+}
+
+.header-icon {
+  width: var(--header-icon-width);
+
+  fill: black;
+}
+
+#header-icon-big {
+  width: 50px;
 }
 /* ============================================== */
 /* Header End */
@@ -437,6 +490,12 @@ body {
   /* Style the text in the sidebar. */
   font-size: var(--sidebar-item-font-size);
   font-weight: bold;
+
+  /* 
+    Prevent the box-shadow from the "#header" appearing above 
+    the sidebar
+  */
+  z-index: 2;
 }
 
 #sidebar-header,
@@ -468,7 +527,7 @@ body {
 }
 
 #sidebar-header-icon {
-  width: 40px;
+  width: var(--sidebar-header-icon-width);
 }
 
 #sidebar-general-links {
@@ -530,9 +589,9 @@ body {
   text-decoration: none;
 } */
 
-.icon {
+.sidebar-icon {
   justify-self: center;
-  width: 25px;
+  width: var(--sidebar-item-icon-width);
   fill: white;
 }
 /* Sidebar End */
