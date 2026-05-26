@@ -97,6 +97,9 @@ a {
   --announcement-text-font-size: 12px;
   --announcement-text-color: rgb(77, 70, 70);
   --announcement-hr-color: rgb(201, 201, 201);
+  --trending-project-id-font-size: 13px;
+  --trending-project-name-font-size: 12px;
+  --trending-project-name-color: rgb(77, 70, 70);
   --sidebar-background-color: rgb(43, 143, 210);
   --sidebar-header-item-font-size: 18px;
   --sidebar-header-icon-width: 40px;
@@ -527,9 +530,9 @@ body {
   /* testing something */
   /* grid-template-rows: repeat(4, max-content); */
   grid-template-rows: repeat(4, auto);
-  gap: 10px;
+  gap: 18px;
 
-  padding: 20px;
+  padding: 18px 22px;
 }
 
 .trending-project {
@@ -537,6 +540,22 @@ body {
   grid-template-columns: max-content max-content;
   align-items: center;
   gap: 10px;
+}
+
+.trending-project-icon {
+  width: 35px;
+}
+
+.trending-project-id {
+  font-size: var(--trending-project-id-font-size);
+  font-weight: 450;
+  color: black;
+}
+
+.trending-project-name {
+  font-size: var(--trending-project-name-font-size);
+  font-weight: normal;
+  color: var(--trending-project-name-color);
 }
 /* ============================================== */
 /* Announcements-And-Trending-Aside End */
