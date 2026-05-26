@@ -89,10 +89,14 @@ a {
   --header-action-button-font-size: 12px;
   --main-content-background-color: rgb(219, 225, 232);
   --main-content-header-font-size: 16px;
+  --card-background-color: white;
   --your-projects-card-header-font-size: 14px;
   --your-projects-card-text-font-size: 13px;
   --your-projects-card-text-color: rgb(77, 70, 70);
-  --card-background-color: white;
+  --announcement-header-font-size: 13px;
+  --announcement-text-font-size: 12px;
+  --announcement-text-color: rgb(77, 70, 70);
+  --announcement-hr-color: rgb(201, 201, 201);
   --sidebar-background-color: rgb(43, 143, 210);
   --sidebar-header-item-font-size: 18px;
   --sidebar-header-icon-width: 40px;
@@ -478,24 +482,41 @@ body {
 }
 
 .announcements-and-trending-card {
+  border-radius: 10px;
   background-color: var(--card-background-color);
 }
 
-#announcements-heading {
+#announcements-section-heading {
   grid-row: 1;
 }
 
 #announcements-section {
   grid-row: 2;
 
-  padding: 20px;
+  padding: 15px 28px;
+}
+
+.announcement-header {
+  font-size: var(--announcement-header-font-size);
+}
+
+.announcement-text {
+  font-size: var(--announcement-text-font-size);
+  color: var(--announcement-text-color);
 }
 
 #announcements-section > hr {
   margin: 10px 0px;
+
+  /* 
+    Setting a border with a color allows us to change the
+    color of an "<hr>" element's line 
+  */
+  border: 1px solid var(--announcement-hr-color);
+  color: var(--announcement-text-color);
 }
 
-#trending-heading {
+#trending-section-heading {
   grid-row: 4;
 }
 
