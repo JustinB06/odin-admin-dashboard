@@ -80,20 +80,24 @@ a {
 /* ============================================== */
 :root {
   --page-font-size: calc(10px + 0.2vw);
+  --page-box-shadow-color: rgb(197, 197, 197);
   --header-icon-width: 25px;
   --header-search-bar-background-color: rgb(219, 225, 232);
   --header-user-display-font-size: 9px;
   --header-user-greeting-text-font-size: 12px;
   --header-user-greeting-name-font-size: 18px;
   --header-action-button-font-size: 12px;
-  --header-box-shadow-color: rgb(197, 197, 197);
+  --main-content-background-color: rgb(219, 225, 232);
+  --main-content-header-font-size: 16px;
+  --your-projects-card-header-font-size: 14px;
+  --your-projects-card-text-font-size: 13px;
+  --your-projects-card-text-color: rgb(77, 70, 70);
+  --card-background-color: white;
   --sidebar-background-color: rgb(43, 143, 210);
   --sidebar-header-item-font-size: 18px;
   --sidebar-header-icon-width: 40px;
-  --sidebar-item-font-size: 13px;
+  --sidebar-item-font-size: 14px;
   --sidebar-item-icon-width: 25px;
-  --main-content-background-color: rgb(219, 225, 232);
-  --card-background-color: white;
 }
 /* ============================================== */
 /* CSS Variables End */
@@ -163,7 +167,7 @@ body {
     the box-shadow appear along the bottom of the "#header".
   */
   z-index: 1;
-  box-shadow: 0px 3px 2px var(--header-box-shadow-color);
+  box-shadow: 0px 3px 2px var(--page-box-shadow-color);
 }
 
 #header-search-section {
@@ -282,8 +286,15 @@ body {
 
   /* temp */
   /* overflow: auto */
-  padding: 10px;
+  padding: 40px 30px;
   background-color: var(--main-content-background-color);
+}
+
+.main-content-header {
+  margin-bottom: 5px;
+
+  font-size: var(--main-content-header-font-size);
+  font-weight: bold;
 }
 
 /* ============================================== */
@@ -292,6 +303,11 @@ body {
 /* Your-Projects-Section Start */
 /* ============================================== */
 #your-projects-section {
+  display: grid;
+  grid-template-rows: max-content auto;
+}
+
+#your-projects-section-grid-container-wrapper {
   /* 
     This creates a grid that will house:
     Row 1 = "#your-projects-section-header"
@@ -306,8 +322,8 @@ body {
   grid-template-columns: 1fr;
   /* testing something */
   /* grid-template-rows: max-content max-content max-content max-content; */
-  grid-template-rows: max-content repeat(3, auto);
-  gap: 10px;
+  grid-template-rows: repeat(3, auto);
+  gap: 22px;
 }
 
 .your-projects-card-row {
@@ -338,11 +354,12 @@ body {
   /* testing something */
   /* grid-template-rows: max-content max-content minmax(0px, 10px) max-content; */
   grid-template-rows: auto auto minmax(0px, 10px) auto;
+  /* gap: 0px; */
 }
 
 .your-projects-card:last-child {
   /* 
-    Applies a 10px left margin to every 
+    Applies a 22px left margin to every 
     ".your-projects-card" that is the last child 
     of its parent. 
     
@@ -350,8 +367,14 @@ body {
     to the second card in every "your-projects-card-row".
     I thought this was easier than creating an empty 
     10px column in each "your-projects-card-row".
+
+    This is necessary as, creating a 22px gap in the
+    ".your-projects-card-row" grid container will create
+    a 22px column gap (just like we want) AND a 22px
+    row gap (between the card's content elements, what
+    we don't want).
   */
-  margin-left: 10px;
+  margin-left: 22px;
 }
 
 .your-projects-card {
@@ -368,16 +391,55 @@ body {
   display: grid;
   grid-template-rows: subgrid;
 
-  padding: 20px;
+  padding: 15px 28px;
+  border-radius: 10px;
   background-color: var(--card-background-color);
+
+  /* 
+      This will create a background image of a linear 
+      gradient, transitioning from a shade of yellow to 
+      white. 
+
+      "to right", and "rgb(x, y, z) 2.5%", means that the 
+      color will be that exact rgb color until the 2.5% 
+      (width?) mark, startingfrom the left side of the element.
+
+      "white 2.5%" means that, starting from the 2.5% (width?)
+      mark, it will be white until the end (the gradient 
+      reaches the end of the width).
+
+      Since both colors end/start at 2.5%, there is no
+      transition between the colors. It's just "rgb(x, y, z)"
+      side by side.
+    */
+  background-image: linear-gradient(
+    to right,
+    rgb(235, 165, 35) 2.5%,
+    white 2.5%
+  );
+  /* background-repeat: no-repeat; */
+
+  box-shadow: 0px 3px 2px var(--page-box-shadow-color);
 }
 
-.your-projects-card > h5 {
+/* .your-projects-card > h3 {
   grid-row: 1;
+} */
+
+.your-projects-card-header {
+  grid-row: 1;
+  font-size: var(--your-projects-card-header-font-size);
 }
 
-.your-projects-card > p {
+/* .your-projects-card > p {
   grid-row: 2;
+} */
+
+.your-projects-card-text {
+  grid-row: 2;
+
+  font-size: var(--your-projects-card-text-font-size);
+  color: var(--your-projects-card-text-color);
 }
 
 .your-projects-card-icons {
@@ -387,7 +449,14 @@ body {
   display: grid;
   grid-template-columns: max-content max-content max-content;
   grid-template-rows: max-content;
+  align-items: center;
   gap: 10px;
+}
+
+.your-projects-card-icon {
+  width: 22px;
+
+  fill: black;
 }
 /* Your-Projects-Section End */
 /* ============================================== */
@@ -403,9 +472,9 @@ body {
     I don't want the section text header to scale 
   */
   grid-template-rows: max-content auto 15px max-content auto;
-  gap: 10px;
+  /* gap: 10px; */
 
-  margin-left: 10px;
+  margin-left: 18px;
 }
 
 .announcements-and-trending-card {
